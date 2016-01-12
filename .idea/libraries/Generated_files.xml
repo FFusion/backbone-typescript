@@ -1,0 +1,41 @@
+<component name="libraryTable">
+  <library name="Generated files" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/src/models/AutoModel.js" />
+        <item url="file://$PROJECT_DIR$/src/helpers/SnackBars.js" />
+        <item url="file://$PROJECT_DIR$/src/views/CarView.js" />
+        <item url="file://$PROJECT_DIR$/src/views/AppView.js" />
+        <item url="file://$PROJECT_DIR$/src/app.js" />
+        <item url="file://$PROJECT_DIR$/src/views/MoreView.js" />
+        <item url="file://$PROJECT_DIR$/node_modules/gulp-typescript-compiler/example/app/car.js" />
+        <item url="file://$PROJECT_DIR$/src/collections/AutoCollections.js" />
+        <item url="file://$PROJECT_DIR$/node_modules/gulp-typescript-compiler/example/app/main.js" />
+        <item url="file://$PROJECT_DIR$/example.js" />
+        <item url="file://$PROJECT_DIR$/src/routers/Router.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/test.js" />
+      <root url="file://$PROJECT_DIR$/typing/backbone/backbone-with-lodash-tests.js" />
+      <root url="file://$PROJECT_DIR$/typing/backbone/backbone-tests.js" />
+      <root url="file://$PROJECT_DIR$/src/views/AutoView.js" />
+      <root url="file://$PROJECT_DIR$/src/views/MainView.js" />
+      <root url="file://$PROJECT_DIR$/src/views/AutoView.js" />
+      <root url="file://$PROJECT_DIR$/src/views/MainView.js" />
+      <root url="file://$PROJECT_DIR$/src/models/AutoModel.js" />
+      <root url="file://$PROJECT_DIR$/src/helpers/SnackBars.js" />
+      <root url="file://$PROJECT_DIR$/src/views/CarView.js" />
+      <root url="file://$PROJECT_DIR$/src/main.js" />
+      <root url="file://$PROJECT_DIR$/src/views/AppView.js" />
+      <root url="file://$PROJECT_DIR$/src/app.js" />
+      <root url="file://$PROJECT_DIR$/src/views/MoreView.js" />
+      <root url="file://$PROJECT_DIR$/src/collections/AutoCollections.js" />
+      <root url="file://$PROJECT_DIR$/node_modules/gulp-typescript-compiler/example/app/car.js" />
+      <root url="file://$PROJECT_DIR$/example.js" />
+      <root url="file://$PROJECT_DIR$/node_modules/gulp-typescript-compiler/example/app/main.js" />
+      <root url="file://$PROJECT_DIR$/src/routers/Router.js" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>

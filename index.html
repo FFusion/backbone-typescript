@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Backbone example</title>
+
+    <!-- Material Design fonts -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css"/>
+
+    <!-- Bootstrap Material Design -->
+    <link href="/bower_components/bootstrap-material-design/dist/css/bootstrap-material-design.css" rel="stylesheet">
+    <link href="/bower_components/bootstrap-material-design/dist/css/ripples.min.css" rel="stylesheet">
+
+    <!--snackBarsJS-->
+    <link href="/bower_components/snackbarjs/dist/snackbar.min.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="/style/main.css"/>
+
+</head>
+
+<body>
+<div class="main-content">
+    <div class="row">
+        <!--Основная информация-->
+        <div class="auto-list">
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>Номер</th>
+                    <th>Марка</th>
+                    <th>Год</th>
+                    <th>Пробег</th>
+                    <th>Цена</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+            <!--форма добавления "модальник"-->
+            <div id="addCarModal" class="modal fade"  role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title">Добавить автомобиль</h4>
+                        </div>
+                        <div class="modal-body">
+
+                            <!--табы-->
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#main" data-toggle="tab">Основная информация</a></li>
+                                <li><a href="#more" data-toggle="tab">Дополнительная информация</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <!--основная инфа-->
+                                <div id="main" class="tab-pane fade active in">
+                                    <div class="row">
+                                        <div class="col-md-6 form-group">
+                                            <label class="control-label">Марка автомобиля</label>
+                                            <input id="mark" class="form-control" type="text"/>
+                                        </div>
+                                        <div class="col-md-6 form-group">
+                                            <label class="control-label">Год</label>
+                                            <input id="year" class="form-control" type="text"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6 form-group">
+                                            <label class="control-label">Пробег</label>
+                                            <input id="mileage" class="form-control" type="text"/>
+                                        </div>
+                                        <div class="col-md-6 form-group">
+                                            <label class="control-label">Цена</label>
+                                            <input id="price" class="form-control" type="text"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--доп инфа-->
+                                <div id="more" class="tab-pane fade">
+                                    <div class="row">
+                                        <div class="col-md-6 form-group">
+                                            <label class="control-label">Продавец</label>
+                                            <input id="clerk" class="form-control" type="text"/>
+                                        </div>
+                                        <div class="col-md-6 form-group">
+                                            <label class="control-label">Телефон продавца</label>
+                                            <input id="phone" class="form-control" type="text"/>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+                            <button id="add" type="button" class="btn btn-primary" aria-hidden="true" data-dismiss="modal">Добавить</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Кнопка "Добавить"-->
+            <div class="pull-right">
+                <button data-toggle="modal" data-target="#addCarModal" class="btn btn-raised btn-success">Добавить</button>
+            </div>
+        </div>
+
+        <!--Дополнительная информация-->
+        <div class="col-md-6 hidden">22</div>
+    </div>
+
+
+
+</div>
+
+<div class="car-content">
+
+</div>
+
+<script type="text/template" id="car">
+    <td><%=id%></td>
+    <td><%=mark%></td>
+    <td><%=year%></td>
+    <td><%=mileage%></td>
+    <td><%=price%></td>
+    <td class="text-center" width="100px">
+        <div id="look">
+            <a href="#/car/<%=id%>">
+                <i class="material-icons">info</i>
+            </a>
+        </div>
+        <div id="delete" data-toggle=snackbar" data-content="Успешно удалено"  data-style="toast" data-timeout="100">
+            <i class="material-icons">delete</i>
+        </div>
+    </td>
+</script>
+
+<script type="text/template" id="carMore">
+    <div class="row">
+        <div class="col-md-6"><%=clerk%></div>
+        <div class="col-md-6"><%=phone%></div>
+    </div>
+    <div class="row">
+        <button id="back" class="btn btn-info pull-left">Назад</button>
+    </div>
+</script>
+
+<!--библиотеки, фреймворки-->
+<script type="text/javascript" src="/bower_components/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="/bower_components/snackbarjs/dist/snackbar.min.js"></script>
+<script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script type="text/javascript" src="/bower_components/underscore/underscore.js"></script>
+<script type="text/javascript" src="/bower_components/backbone/backbone.js"></script>
+<script type="text/javascript" src="/bower_components/backbone.localstorage/backbone.localStorage.js"></script>
+
+<script type="text/javascript" src="src/main.js"></script>
+</body>
+</html>
