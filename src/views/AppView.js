@@ -3,14 +3,14 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var MainView = (function (_super) {
-    __extends(MainView, _super);
-    function MainView() {
+var AppView = (function (_super) {
+    __extends(AppView, _super);
+    function AppView() {
         _super.call(this);
         this.setElement($(".auto-list"));
         cars.fetch({ reset: true });
     }
-    MainView.prototype.initialize = function () {
+    AppView.prototype.initialize = function () {
         _.bindAll(this, 'addCar');
         // атрибуты модели
         this.mark = $('#mark');
@@ -22,20 +22,20 @@ var MainView = (function (_super) {
         cars.on('add', this.addCar, this);
         cars.on('reset', this.render, this);
     };
-    MainView.prototype.events = function () {
+    AppView.prototype.events = function () {
         return {
             "click #add": "createNewCar"
         };
     };
-    MainView.prototype.render = function () {
+    AppView.prototype.render = function () {
         cars.each(this.addCar);
         return this;
     };
-    MainView.prototype.addCar = function (auto) {
-        var viewCar = new AutoView({ model: auto });
+    AppView.prototype.addCar = function (auto) {
+        var viewCar = new CarView({ model: auto });
         $('.auto-list > table > tbody').append(viewCar.render().el);
     };
-    MainView.prototype.createNewCar = function () {
+    AppView.prototype.createNewCar = function () {
         // добавляем модель в коллекцию
         cars.create({
             id: cars.nextNumber(),
@@ -53,6 +53,6 @@ var MainView = (function (_super) {
         this.clerk.val('');
         this.phone.val('');
     };
-    return MainView;
+    return AppView;
 })(Backbone.View);
 //# sourceMappingURL=AppView.js.map

@@ -1,4 +1,4 @@
-class MainView extends Backbone.View<Backbone.Model> {
+class AppView extends Backbone.View<Backbone.Model> {
 
     mark:any;
     year:any;
@@ -43,7 +43,7 @@ class MainView extends Backbone.View<Backbone.Model> {
     }
 
     addCar(auto:Backbone.Model) {
-        var viewCar = new AutoView({model:auto});
+        var viewCar = new CarView({model:auto});
         $('.auto-list > table > tbody').append(viewCar.render().el);
     }
 

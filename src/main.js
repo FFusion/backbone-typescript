@@ -1,6 +1,6 @@
 ///<reference path="../typing/all.d.ts"/>
 $(function () {
-    new MainView();
+    new AppView();
 });
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -69,14 +69,14 @@ var Router = (function (_super) {
 })(Backbone.Router);
 var controller = new Router();
 Backbone.history.start();
-var MainView = (function (_super) {
-    __extends(MainView, _super);
-    function MainView() {
+var AppView = (function (_super) {
+    __extends(AppView, _super);
+    function AppView() {
         _super.call(this);
         this.setElement($(".auto-list"));
         cars.fetch({ reset: true });
     }
-    MainView.prototype.initialize = function () {
+    AppView.prototype.initialize = function () {
         _.bindAll(this, 'addCar');
         // атрибуты модели
         this.mark = $('#mark');
@@ -88,20 +88,20 @@ var MainView = (function (_super) {
         cars.on('add', this.addCar, this);
         cars.on('reset', this.render, this);
     };
-    MainView.prototype.events = function () {
+    AppView.prototype.events = function () {
         return {
             "click #add": "createNewCar"
         };
     };
-    MainView.prototype.render = function () {
+    AppView.prototype.render = function () {
         cars.each(this.addCar);
         return this;
     };
-    MainView.prototype.addCar = function (auto) {
-        var viewCar = new AutoView({ model: auto });
+    AppView.prototype.addCar = function (auto) {
+        var viewCar = new CarView({ model: auto });
         $('.auto-list > table > tbody').append(viewCar.render().el);
     };
-    MainView.prototype.createNewCar = function () {
+    AppView.prototype.createNewCar = function () {
         // добавляем модель в коллекцию
         cars.create({
             id: cars.nextNumber(),
@@ -119,47 +119,47 @@ var MainView = (function (_super) {
         this.clerk.val('');
         this.phone.val('');
     };
-    return MainView;
+    return AppView;
 })(Backbone.View);
-var AutoView = (function (_super) {
-    __extends(AutoView, _super);
-    function AutoView(options) {
+var CarView = (function (_super) {
+    __extends(CarView, _super);
+    function CarView(options) {
         this.tagName = 'tr';
         _super.call(this, options);
         this.template = _.template($('#car').html());
         this.initialize();
     }
-    AutoView.prototype.initialize = function () {
+    CarView.prototype.initialize = function () {
         //первый вариант прослушки события
         this.model.on('change', this.render, this);
         //второй вариант прослушки события
         this.listenTo(this.model, 'destroy', this.remove);
         //        this.model.view = this;
     };
-    AutoView.prototype.events = function () {
+    CarView.prototype.events = function () {
         return {
             "click #delete": "deleteCar",
             "click #look": "lookMore"
         };
     };
-    AutoView.prototype.render = function () {
+    CarView.prototype.render = function () {
         this.$el.html(this.template(this.model.toJSON()));
         return this;
     };
-    AutoView.prototype.deleteCar = function () {
+    CarView.prototype.deleteCar = function () {
         this.model.destroy();
         var message = new snackHelpers();
         message.shack({ content: "Успешно удалено", style: "toast text-center", timeout: 2000 });
     };
-    AutoView.prototype.lookMore = function () {
+    CarView.prototype.lookMore = function () {
         controller.car();
         var viewMore = new MoreView({ model: this.model });
     };
-    AutoView.prototype.remove = function () {
+    CarView.prototype.remove = function () {
         this.$el.remove();
         return this;
     };
-    return AutoView;
+    return CarView;
 })(Backbone.View);
 var MoreView = (function (_super) {
     __extends(MoreView, _super);

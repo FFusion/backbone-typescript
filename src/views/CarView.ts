@@ -1,4 +1,4 @@
-class AutoView extends Backbone.View<Backbone.Model> {
+class CarView extends Backbone.View<Backbone.Model> {
     template: (data: any) => string;
 
     constructor(options?: any) {

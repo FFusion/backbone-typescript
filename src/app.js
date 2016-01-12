@@ -1,5 +1,5 @@
 ///<reference path="../typing/all.d.ts"/>
 $(function () {
-    new MainView();
+    new AppView();
 });
 //# sourceMappingURL=app.js.map

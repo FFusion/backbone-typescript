@@ -2,6 +2,6 @@
 
 
 $(() => {
-    new MainView();
+    new AppView();
 });
 
